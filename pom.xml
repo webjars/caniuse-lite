@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>caniuse-lite</artifactId>
-    <version>1.0.30000988-SNAPSHOT</version>
+    <version>1.0.30000988</version>
     <name>caniuse-lite</name>
     <description>WebJar for caniuse-lite</description>
     <url>http://webjars.org</url>
@@ -49,7 +49,7 @@
         <url>http://github.com/webjars/caniuse-lite</url>
         <connection>scm:git:https://github.com/webjars/caniuse-lite.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/caniuse-lite.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>caniuse-lite-1.0.30000988</tag>
     </scm>
     
     <build>
@@ -78,13 +78,13 @@
                         <goals><goal>run</goal></goals>
                         <configuration>
                             <target>
-                                <mkdir dir="${extractDir}"/>
+                                <mkdir dir="${extractDir}" />
                                 <exec executable="npm" failonerror="true" dir="${extractDir}">
                                     <arg value="install" />
                                     <arg value="caniuse-lite@${version.unsnapshot}" />
                                 </exec>
 
-                                <echo message="moving resources"/>
+                                <echo message="moving resources" />
                                 <move todir="${destDir}">
                                     <fileset dir="${extractDir}/node_modules/caniuse-lite" />
                                 </move>
