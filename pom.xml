@@ -18,6 +18,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <extractDir>${project.build.directory}/${project.artifactId}-${project.version}</extractDir>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
             {
@@ -77,14 +78,15 @@
                         <goals><goal>run</goal></goals>
                         <configuration>
                             <target>
-                                <exec executable="npm" failonerror="true" dir="${project.build.directory}">
-                                    <arg value="install"/>
-                                    <arg value="caniuse-lite@${version.unsnapshot}"/>
+                                <mkdir dir="${extractDir}"/>
+                                <exec executable="npm" failonerror="true" dir="${extractDir}">
+                                    <arg value="install" />
+                                    <arg value="caniuse-lite@${version.unsnapshot}" />
                                 </exec>
 
                                 <echo message="moving resources"/>
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/node_modules/caniuse-lite"/>
+                                    <fileset dir="${extractDir}/node_modules/caniuse-lite" />
                                 </move>
                             </target>
                         </configuration>
